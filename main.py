@@ -3,8 +3,10 @@ from costanti import *
 from pygame.locals import *
 import random
 import time
+import time
 from Player import *
 from pygame import font
+from nemico import *
 from nemico import *
 
 pygame.init()
@@ -23,6 +25,32 @@ nemici = pygame.sprite.Group()
 #powerups = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
+
+enemies = []
+
+for y in range(0,5):
+    row = []
+    for x in range(0,3):
+        e = Enemy(x,y)
+        nemici.add(e)
+        all_sprites.add(e)
+        row.append(e)
+    enemies.append(row)
+    
+print(enemies)
+
+enemies = []
+
+for y in range(0,5):
+    row = []
+    for x in range(0,3):
+        e = Enemy(x,y)
+        nemici.add(e)
+        all_sprites.add(e)
+        row.append(e)
+    enemies.append(row)
+    
+print(enemies)
 
 enemies = []
 
@@ -75,6 +103,7 @@ while running:
         elif event.type == pygame.QUIT:
             running = False
         
+    
     
     
     pressed_keys = pygame.key.get_pressed()
