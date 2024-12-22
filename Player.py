@@ -1,8 +1,8 @@
 import pygame
 from costanti import *
-import asyncio
 from pygame.locals import *
 from Proiettili import *
+import time
 
 class Player(pygame.sprite.Sprite):
     def __init__(self,):
@@ -14,10 +14,10 @@ class Player(pygame.sprite.Sprite):
                       SCREEN_HEIGHT-20
                       )
         )
-        self.p = 0
+        self.speed = 0.001
     
-    async def update(self, pressedKeys):
-        await asyncio.sleep(0,3)
+    def update(self, pressedKeys):
+        time.sleep(self.speed)
         if pressedKeys[K_d]:
             self.rect.move_ip(1,0)
        

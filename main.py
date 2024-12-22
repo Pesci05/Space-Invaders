@@ -2,9 +2,10 @@ import pygame
 from costanti import *
 from pygame.locals import *
 import random
-import asyncio
+import time
 from Player import *
 from pygame import font
+from nemico import *
 
 pygame.init()
 
@@ -21,6 +22,19 @@ nemici = pygame.sprite.Group()
 #powerups = pygame.sprite.Group()
 all_sprites = pygame.sprite.Group()
 all_sprites.add(player)
+
+enemies = []
+
+for y in range(0,5):
+    row = []
+    for x in range(0,3):
+        e = Enemy(x,y)
+        nemici.add(e)
+        all_sprites.add(e)
+        row.append(e)
+    enemies.append(row)
+    
+print(enemies)
 
 while running:
 
@@ -41,9 +55,10 @@ while running:
             running = False
         
     
-
+    
     pressed_keys = pygame.key.get_pressed()
-    asyncio.run(player.update(pressed_keys))
+
+    player.update(pressed_keys)
 
     for p in proiettili:
         p.update()
