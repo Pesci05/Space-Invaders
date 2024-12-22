@@ -15,6 +15,7 @@ class Player(pygame.sprite.Sprite):
                       )
         )
         self.speed = 0.001
+        self.point = 0
     
     def update(self, pressedKeys):
         time.sleep(self.speed)
