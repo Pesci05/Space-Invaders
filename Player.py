@@ -19,6 +19,8 @@ class Player(pygame.sprite.Sprite):
     
     def update(self, pressedKeys):
         time.sleep(self.speed)
+    def update(self, pressedKeys):
+        time.sleep(self.speed)
         if pressedKeys[K_d]:
             self.rect.move_ip(1,0)
        
