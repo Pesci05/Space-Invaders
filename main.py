@@ -32,28 +32,7 @@ for y in range(0,5):
     row = []
     for x in range(0,3):
         e = Enemy(x,y)
-        nemici.add(e)
-        all_sprites.add(e)
-        row.append(e)
-    enemies.append(row)
-    
-print(enemies)
-
-enemies = []
-
-for y in range(0,5):
-    row = []
-    for x in range(0,3):
-        e = Enemy(x,y)
-        nemici.add(e)
-        all_sprites.add(e)
-        row.append(e)
-    enemies.append(row)
-    
-print(enemies)
-
-enemies = []
-
+        
 screen.fill((0, 0, 0))
 for y in range(0,5):
     row = []
