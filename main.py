@@ -30,21 +30,19 @@ enemies = []
 
 for y in range(0,5):
     row = []
-    for x in range(0,3):
-        e = Enemy(x,y)
-        
-screen.fill((0, 0, 0))
-for y in range(0,5):
-    row = []
     for x in range(0,8):
-        tf = random.randint(0,y+3)
-        e = Enemy(x,y,tf)
+        e = Enemy(x,y)
         nemici.add(e)
         all_sprites.add(e)
         row.append(e)
     enemies.append(row)
-    
-enemies.reverse()
+        
+screen.fill((0, 0, 0))
+
+
+killRemain = 8
+rowKill = 4
+
 while running:
 
     
@@ -59,17 +57,23 @@ while running:
                 proiettiliP.add(p)
                 all_sprites.add(p)
         elif event.type == ENEMY_FIRE:
-            r = enemies[0]
-            i= 0
-            c = 0
 
-            while c < 4 and i < len(r):
-                p = r[i].fire()
-                if p is not None:
-                    proiettiliN.add(p)
-                    all_sprites.add(p)
-                    c+=1
-                i+=1
+            for e in range(len(enemies[rowKill])):
+                for r in range(len(enemies)-1):
+                    #print(len(enemies))
+                    if enemies[r+1][e] is None:
+                        p = enemies[r][e].fire()
+                        if p is not None:
+                            proiettiliN.add(p)
+                            all_sprites.add(p)
+                    elif r+1 == len(enemies)-1:
+                        
+                        p = enemies[r+1][e].fire()
+                        if p is not None:
+                            proiettiliN.add(p)
+                            all_sprites.add(p)
+                     
+
                 
             #for e in r:
             #    p=e.fire()
@@ -91,15 +95,30 @@ while running:
         player.kill()
         pygame.quit()
     
-    for j,r in enumerate(enemies,0):
-        for i,e in enumerate(r,0): 
-            if pygame.sprite.spritecollideany(e,proiettiliP):
-                
-                enemies[j].pop(i)
-                e.kill()
+    for i,r in enumerate(enemies,0):
+        for j,e in enumerate(r,0): 
+            for p in proiettiliP:
+                if pygame.sprite.collide_rect(e,p):
+                    if i == rowKill:
+                        e.kill()
+                        p.kill()
+                        enemies[i].pop(j)
+                        killRemain -= 1
      
-    player.update(pressed_keys)
 
+    if killRemain <= 0:
+        killRemain = 7
+        enemies.pop(rowKill)
+        if rowKill-1 >= 0:
+            rowKill -= 1
+            killRemain = len(enemies[rowKill])
+        else:
+            pygame.quit()
+
+
+    
+    player.update(pressed_keys)
+      
     for p in proiettiliN:
         p.update()
     for p in proiettiliP:

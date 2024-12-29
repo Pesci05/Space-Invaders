@@ -8,5 +8,5 @@ pygame.init()
 SCREEN_WIDTH = 500
 SCREEN_HEIGHT = 700
 ENEMY_FIRE = pygame.constants.USEREVENT+1
-pygame.time.set_timer(ENEMY_FIRE,700)
+pygame.time.set_timer(ENEMY_FIRE,1000)
 

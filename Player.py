@@ -21,10 +21,10 @@ class Player(pygame.sprite.Sprite):
         time.sleep(self.speed)
     def update(self, pressedKeys):
         time.sleep(self.speed)
-        if pressedKeys[K_d]:
+        if pressedKeys[K_RIGHT]:
             self.rect.move_ip(1,0)
        
-        if pressedKeys[K_a]:
+        if pressedKeys[K_LEFT]:
             self.rect.move_ip(-1,0)
 
         if self.rect.right >= SCREEN_WIDTH-5:

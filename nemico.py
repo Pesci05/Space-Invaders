@@ -6,18 +6,23 @@ import time
 from proiettiliNemici import *
 
 class Enemy(pygame.sprite.Sprite):
-    def __init__(self,x,y,tf):
+    def __init__(self,x,y):
         super(Enemy,self).__init__()
         self.surf = pygame.Surface([50,25])
         if y == 0:
+            self.y = y
             self.surf.fill((255,255,255))
         elif y == 1:
+            self.y = y
             self.surf.fill((255,000,000))
         elif y == 2:
+            self.y = y
             self.surf.fill((000,255,000))
         elif y == 3:
+            self.y = y
             self.surf.fill((000,000,255))
         elif y == 4:
+            self.y = y
             self.surf.fill((255,000,255))
             
         self.rect = self.surf.get_rect(
@@ -26,7 +31,7 @@ class Enemy(pygame.sprite.Sprite):
                  10+(y*40)
             )
         )
-        self.timeFire = tf
+        #self.timeFire = tf
         
         
     

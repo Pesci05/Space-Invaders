@@ -11,6 +11,6 @@ class ProiettiliNemici(pygame.sprite.Sprite):
         #self.speed = 0,5
     
     def update(self):
-            self.rect.move_ip(0,2)
+            self.rect.move_ip(0,1)
             if self.rect.top >= SCREEN_HEIGHT:
                 self.kill()
