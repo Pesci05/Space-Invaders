@@ -59,15 +59,14 @@ while running:
         elif event.type == ENEMY_FIRE:
 
             for e in range(len(enemies[rowKill])):
-                for r in range(len(enemies)-1):
-                    #print(len(enemies))
+                for r in range(len(enemies )):
                     if enemies[r+1][e] is None:
                         p = enemies[r][e].fire()
                         if p is not None:
                             proiettiliN.add(p)
                             all_sprites.add(p)
+
                     elif r+1 == len(enemies)-1:
-                        
                         p = enemies[r+1][e].fire()
                         if p is not None:
                             proiettiliN.add(p)
